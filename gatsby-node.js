@@ -81,6 +81,7 @@ exports.createPages = ({ actions, graphql }) => {
   return graphql(`
     {
       allSlide {
+        totalCount
         edges {
           node {
             html
@@ -92,15 +93,17 @@ exports.createPages = ({ actions, graphql }) => {
     if (result.errors) {
       return Promise.reject(result.errors);
     }
-
-    const slides = result.data.allSlide.edges;
+    const { totalCount } = result.data.allSlide;
+    const { edges: slides } = result.data.allSlide;
 
     slides.forEach((slide, index) => {
+      console.log(slide);
       createPage({
         path: `/${index + 1}`,
         component: blogPostTemplate,
         context: {
           index: index + 1,
+          totalCount,
           absolutePath: process.cwd() + `/src/slides#${index + 1}`,
         },
       });
