@@ -362,7 +362,7 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 - A little bit tricker to write, as well unfortunately.
 
---- 
+---
 
 # Examples of integration testing
 
@@ -370,16 +370,16 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 - Does a form, containing multiple components, collect and submit data as we expect?
 
---- 
+---
 
 # Integration testing libraries
 
 - Enzyme 
-    -- Render out react components and dive into the HTML.
+    - Render out react components and dive into the HTML.
 - React Testing Library
-    -- Similar to Enzyme.
+    - Similar to Enzyme.
 - Puppeteer
-    -- Headless Chrome instance.
+    - Headless Chrome instance.
 
 ---
 
