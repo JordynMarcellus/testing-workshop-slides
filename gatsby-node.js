@@ -97,7 +97,6 @@ exports.createPages = ({ actions, graphql }) => {
     const { edges: slides } = result.data.allSlide;
 
     slides.forEach((slide, index) => {
-      console.log(slide);
       createPage({
         path: `/${index + 1}`,
         component: blogPostTemplate,
