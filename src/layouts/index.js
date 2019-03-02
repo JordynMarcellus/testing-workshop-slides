@@ -70,9 +70,9 @@ class TemplateWrapper extends Component {
           onSwipedLeft={this.swipeLeft}
           onSwipedRight={this.swipeRight}
         >
-          <Transition location={location}>
-            <div id="slide">{children}</div>
-          </Transition>
+          {/* <Transition location={location}> */}
+          <div id="slide">{children}</div>
+          {/* </Transition> */}
         </Swipeable>
       </div>
     );
