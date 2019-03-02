@@ -4,6 +4,14 @@ Jordyn Marcellus (they/them)
 
 ---
 
+# A request before we start learning...
+- Be present 
+- Play fully
+- No bad questions, no bad answers
+- Shoutouts to [Raw Signal Group](https://www.rawsignal.ca) for the inspiration.
+
+---
+
 # What we're learning
 
 - Why we test
@@ -37,6 +45,18 @@ Jordyn Marcellus (they/them)
 
 ---
 
+# Tests are about confidence
+
+- Are you _confident_ that your code works? (I'm not 🤪)
+
+- Tests give you confidence that yourcode works as you expect it to.
+
+- Confidence makes you feel better about what you're building, how it's built and how you can ensure you don't break it when trying to make it better.
+
+- Ensures changes in one part of the codebase don't affect other parts of the codebase.
+
+---
+
 # The benefits of testing, part one
 
 - Re-factor with confidence
@@ -65,6 +85,8 @@ Jordyn Marcellus (they/them)
     - test runner
 - React test renderer
     - renders react components 
+- React test library
+    - integration testing for react compmonents
 - Puppeteer
     - runs headless Chrome using node
 
@@ -81,10 +103,11 @@ Jordyn Marcellus (they/them)
 ---
 
 # Test levels
-    - integration: components working together
-        - given some data, what happens with this set of components?
-    - functional (also called end-to-end): a full user flow testing a working feature.
-        - does this feature work from the UI layer down to the API layer? 
+
+- integration: components working together
+    - given some data, what happens with this set of components?
+- functional (also called end-to-end): a full user flow testing a working feature.
+    - does this feature work from the UI layer down to the API layer? 
 
 - We will focus on unit, component and integration tests for the purposes of this workshop.
 
@@ -127,6 +150,8 @@ Jordyn Marcellus (they/them)
     - hint: this time there's a new "--coverage" flag
 
 - Run tests with the above flags combined
+
+---
 
 # Unit tests
 
@@ -182,10 +207,11 @@ describe('filterOutNullValues()', () => {
 })
 ```
 
---- 
+---
 
 # Wait wtf is going on there
 
+```
 import {filterOutNullValues} from './filterOutNullValues' // import function we want to test
 
 describe('filterOutNullValues()', () => { // top-level describe block
@@ -197,20 +223,95 @@ describe('filterOutNullValues()', () => { // top-level describe block
         ).toBe(expectedFilteredData) // to match the data we expect
     })
 })
+```
 
---- 
+---
 
 # [Jest cheat sheet](https://devhints.io/jest)
 
 ---
 
-# Unit testing exercise 1: Let's mob program on some unit tests for a convenience function!
+# Unit testing exercise 1: Unit testing a convenience function (mob)!
 
 ---
 
 # Unit testing exercise 2: Write some unit tests for a convenience function!
 
---- 
+---
+
+# Test-driven development
+
+---
+
+# Test-driven development
+
+- What's your process for building app functionality?
+
+---
+
+# The frustrating - and virtuous --  TDD cycle
+
+- We start with a failing test.
+
+- We write _just_ enough code to make it pass.
+
+- Once the test comes out green, we re-factor.
+
+- Repeat.
+
+---
+
+# wat
+
+---
+
+# Why We do this
+
+- We can spin out of control when developing feature work.
+
+- TDD provides _focus_
+
+- TDD cycle **requires** re-factoring. 
+
+---
+
+# Why we do this, cont'd
+
+- "Just enough code" may not be very reliable or extensible 😉
+
+- But we know our functionality works, because we have tests!
+
+- So, we made it work... and now we made it work better 😈
+
+---
+
+# TDD, exercise #1 (mob): 
+
+- Here's a bug:
+    - expected behaviour: (tktktk)
+    - actual behaviour: (tktktk)
+
+---
+
+# TDD exercise #2 (individual/paired)
+- Here's another bug: 
+    - expected behaviour: (tktktk)
+    - actual behviour: (tktktk)
+
+---
+
+# TDD exercise #3 (individual/paired)
+- We need to extend our functionality
+- Expected behaviour: (tktktk)
+
+---
+
+# How can I do TDD on my web app
+
+- Possible but more tricky!
+- We'll circle back to this after lunch. 
+
+---
 
 # Component tests
 
@@ -224,11 +325,83 @@ describe('filterOutNullValues()', () => { // top-level describe block
 # Styles of component tests
 - Render out a component to see if it matches a snapshot
     - Snapshots are serialized JSON representations of our React components
+
 - Use component instance methods (onChange, onInput) to see if changes are being propagated
 
+---
+
+# Component testing, exercise #1 (mob)
+
+---
+
+# Component testing, exercise #2 (paired)
+
+---
+
+# Let's get some food...
+
+---
+
+# Welcome back!
 
 ---
 
 # Integration tests 
 
-- 
+- So, we've tested the individual pieces. But how do they play together...?
+
+- [Oh no](https://twitter.com/ThePracticalDev/status/687672086152753152)
+
+---
+
+# Integration tests, cont'd
+
+-  Integration testing is _essential_ for any kind of developer testing strategy.
+
+- A little trickier to define -- there's multiple differing kinds of strategies.
+
+- A little bit tricker to write, as well unfortunately.
+
+--- 
+
+# Examples of integration testing
+
+- Given mock data, how does a container and it's child components render? 
+
+- Does a form, containing multiple components, collect and submit data as we expect?
+
+--- 
+
+# Integration testing libraries
+
+- Enzyme 
+    -- Render out react components and dive into the HTML.
+- React Testing Library
+    -- Similar to Enzyme.
+- Puppeteer
+    -- Headless Chrome instance.
+
+---
+
+# What we'll be learning, and why.
+
+- React Testing Library and Puppeteer
+
+---
+
+# Puppeteer
+
+- Puppeteer will allow for tests to be written that interact with a _browser instance_ 
+    - advantages: 
+        - closer to a real-world browser, more confidence in your tests
+        - not hooked in to React ecosystem -- if you wanna move to a different framework, tests will still work
+    - disadvantages: 
+        - slower
+        - more complex === more failure points
+
+---
+
+# React Testing Library
+
+- The philosophy behind React Testing Library is: 
+    > The more your tests resemble the way your software is used, the more confidence they can give you.
