@@ -14,7 +14,7 @@ Jordyn Marcellus (they/them)
 # Introduction! 
 
 - Hi, I'm Jordyn. 
-    - This is my first time running a workshop, so we're all learning today 😅
+    - This is my first time running a workshop, so we're all learning today! 
 
 - Who are you? Why do you want to learn testing? 
 
@@ -93,12 +93,8 @@ Jordyn Marcellus (they/them)
     - renders react components 
 - React test library
     - integration testing for react compmonents
-
+    
 ---
-
-# Let's go through an example! 
-
---
 
 # Test levels
 
@@ -325,5 +321,80 @@ describe('filterOutNullValues()', () => { // top-level describe block
 # Integration testing exercise 2 
 
 - Try and test the form container! 
+
+---
+
+# Test-driven development
+
+---
+
+# Test-driven development
+
+- What's your process for building app functionality?
+
+---
+
+# The frustrating - and virtuous --  TDD cycle
+
+- We start with a failing test.
+
+- We write _just_ enough code to make it pass.
+
+- Once the test comes out green, we re-factor.
+
+- Repeat.
+
+---
+
+# wat
+
+---
+
+# Why We do this
+
+- We can spin out of control when developing feature work.
+
+- TDD provides _focus_
+
+- TDD cycle **requires** re-factoring. 
+
+---
+
+# Why we do this, cont'd
+
+- "Just enough code" may not be very reliable or extensible 😉
+
+- But we know our functionality works, because we have tests!
+
+- So, we made it work... and now we made it work better 😈
+
+---
+
+## Hello, react-testing-library
+
+- The philosophy behind React Testing Library is: 
+    > The more your tests resemble the way your software is used, the more confidence they can give you.
+
+- React Testing Library allows us to use accessibility features to select HTML elements, render out DOM nodes via React and interact with them as a user would. 
+
+---
+
+# Let's get our hands on a keyboard Marcellus >.>
+
+---
+
+# TDD, exercise #1 (mob): 
+
+- Let's build an input component! 
+
+---
+
+# TDD exercise #2 (individual/paired)
+
+- Build a button 
+
+- Build a form with our input and our button! 
+
+---
 
 # Next steps
