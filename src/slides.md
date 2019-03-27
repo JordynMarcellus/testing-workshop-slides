@@ -107,7 +107,7 @@ Jordyn Marcellus (they/them)
 
 # Unit testing
 
-unit testing: testing the smallest parts of 
+unit testing: testing functions, classes, etc.
 - focused on small pieces of discrete functionality
 - e.g. does this function return data we expect it to?
 - difficulty level: easy
@@ -118,7 +118,7 @@ unit testing: testing the smallest parts of
 
 component testing: testing a (React) component
 - given a set of props, what does the component render?
-- when a button is clicked, does a function get called?
+- when a button is clicked, does a function passed in to props get called?
 - difficulty level: easy
 ---
 
@@ -155,9 +155,9 @@ component testing: testing a (React) component
 - Starts with npm script.
     - NPM scripts run a command line action using node
 
-- The script we have running will collect 
-    - `"test" : "jest"`
-
+- The script we have running will:
+    - run our tests in "watch" mode (when we save, it re-runs tests)
+    - collects code coverage from 
 
 # Unit tests
 
@@ -207,8 +207,8 @@ import {filterOutNullValues} from './filterOutNullValues'
 describe('filterOutNullValues()', () => {
     it('successfully filters out null values in our array', () => {
         const mockData = [null, 1, "cool beans"]
-        const filteredData = [1, "cool beans"]
-        expect(filterOutNullValues(mockData)).toBe(filteredData)
+        const expectedFilteredData = [1, "cool beans"]
+        expect(filterOutNullValues(mockData)).toBe(expectedFilteredData)
     })
 })
 ```
@@ -224,7 +224,7 @@ describe('filterOutNullValues()', () => { // top-level describe block
     it('successfully filters out null values in our array', () => { // test block
         const mockData = [null, 1, "cool beans"] 
         const expectedFilteredData = [1, "cool beans"]
-        expect( // our assertion
+        expect( // we assert
             filterOutNullValues(mockData) // that we expect running this function 
         ).toBe(expectedFilteredData) // to match the data we expect
     })
@@ -318,10 +318,18 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 ---
 
-# Integration testing exercise 2 
+# Integration testing exercise 2
 
-- Try and test the form container! 
+- Try and test the form container!
+- Test the app container 😈
 
+---
+
+# Next steps
+
+---
+
+<<<<<<< Updated upstream
 ---
 
 # Test-driven development
@@ -398,3 +406,6 @@ describe('filterOutNullValues()', () => { // top-level describe block
 ---
 
 # Next steps
+=======
+# Resources
+>>>>>>> Stashed changes
