@@ -34,7 +34,7 @@ Jordyn Marcellus (they/them)
 - We'll need node.js 
     - ideally latest long-term-support (LTS), currently: 10.15.1
 
-- clone repo [tktktk](https://www.google.com)
+- clone repo [here](https://github.com/JordynMarcellus/testing-workshop-slides)
 
 - Raise your hand real high if you need help
     - Help your fellow workshoppers if you can ☺️
@@ -329,8 +329,6 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 ---
 
-<<<<<<< Updated upstream
----
 
 # Test-driven development
 
@@ -406,6 +404,3 @@ describe('filterOutNullValues()', () => { // top-level describe block
 ---
 
 # Next steps
-=======
-# Resources
->>>>>>> Stashed changes
