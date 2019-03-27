@@ -8,7 +8,15 @@ Jordyn Marcellus (they/them)
 - Be present 
 - Play fully
 - No bad questions, no bad answers
-- Shoutouts to [Raw Signal Group](https://www.rawsignal.ca) for the inspiration.
+
+---
+
+# Introduction! 
+
+- Hi, I'm Jordyn. 
+    - This is my first time running a workshop, so we're all learning today 😅
+
+- Who are you? Why do you want to learn testing? 
 
 ---
 
@@ -33,7 +41,7 @@ Jordyn Marcellus (they/them)
 
 ---
 
-# First, some theory.
+# Why we test
 
 ---
 
@@ -49,11 +57,9 @@ Jordyn Marcellus (they/them)
 
 - Are you _confident_ that your code works? (I'm not 🤪)
 
-- Tests give you confidence that yourcode works as you expect it to.
+- Tests give you confidence that your code works as you expect it to.
 
 - Confidence makes you feel better about what you're building, how it's built and how you can ensure you don't break it when trying to make it better.
-
-- Ensures changes in one part of the codebase don't affect other parts of the codebase.
 
 ---
 
@@ -87,33 +93,55 @@ Jordyn Marcellus (they/them)
     - renders react components 
 - React test library
     - integration testing for react compmonents
-- Puppeteer
-    - runs headless Chrome using node
 
 ---
+
+# Let's go through an example! 
+
+--
 
 # Test levels
 
 - Multiple "levels" of tests, with different purposes for each. 
-    - unit: small pieces of discrete functionality
-        - does this function work as we expect it to?
-    - component: one component in isolation
-        - given a set of props, what does the component render?
+    - unit
+    - component
+    - integration
+    - functional (also called end-to-end or UI testing)
+---
+
+# Unit testing
+
+unit testing: testing the smallest parts of 
+- focused on small pieces of discrete functionality
+- e.g. does this function return data we expect it to?
+- difficulty level: easy
 
 ---
 
-# Test levels
+# Component testing
 
-- integration: components working together
+component testing: testing a (React) component
+- given a set of props, what does the component render?
+- when a button is clicked, does a function get called?
+- difficulty level: easy
+---
+
+# Integration testing 
+
+- testing components working together
     - given some data, what happens with this set of components?
-- functional (also called end-to-end): a full user flow testing a working feature.
-    - does this feature work from the UI layer down to the API layer? 
+    - when a button is clicked, does it call an asynchronous data-fetch?
+    - Ensures changes in one part of the codebase don't affect other parts of the codebase.
+- difficulty level: medium
 
 - We will focus on unit, component and integration tests for the purposes of this workshop.
 
 ---
 
-# Let's get our hands on a keyboard Marcellus >.>
+# A note on functional testing
+
+- Functional testing is hard, messy and out of scope for a six-hour intro workshop.
+- We can get _most_ of the benefits of functional testing with proper integration testing.
 
 ---
 
@@ -131,27 +159,9 @@ Jordyn Marcellus (they/them)
 - Starts with npm script.
     - NPM scripts run a command line action using node
 
----
+- The script we have running will collect 
+    - `"test" : "jest"`
 
-# Exercise 1 (group)
-
-- Create an npm script to run our first tests 🎊
-
-- `"test" : "jest"`
-
----
-
-# Exercise 2 (individual/paired)
-
-- Run tests in "watch" mode
-    - hint: just like previous exercise, but with new "--watch" flag
-
-- Run tests to see how much code we've covered with our tests
-    - hint: this time there's a new "--coverage" flag
-
-- Run tests with the above flags combined
-
----
 
 # Unit tests
 
@@ -235,81 +245,9 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 ---
 
-# Unit testing exercise 2: Write some unit tests for a convenience function!
+# Unit testing exercise 2: Write some unit tests for convenience functions!
 
----
-
-# Test-driven development
-
----
-
-# Test-driven development
-
-- What's your process for building app functionality?
-
----
-
-# The frustrating - and virtuous --  TDD cycle
-
-- We start with a failing test.
-
-- We write _just_ enough code to make it pass.
-
-- Once the test comes out green, we re-factor.
-
-- Repeat.
-
----
-
-# wat
-
----
-
-# Why We do this
-
-- We can spin out of control when developing feature work.
-
-- TDD provides _focus_
-
-- TDD cycle **requires** re-factoring. 
-
----
-
-# Why we do this, cont'd
-
-- "Just enough code" may not be very reliable or extensible 😉
-
-- But we know our functionality works, because we have tests!
-
-- So, we made it work... and now we made it work better 😈
-
----
-
-# TDD, exercise #1 (mob): 
-
-- Here's a bug:
-    - expected behaviour: (tktktk)
-    - actual behaviour: (tktktk)
-
----
-
-# TDD exercise #2 (individual/paired)
-- Here's another bug: 
-    - expected behaviour: (tktktk)
-    - actual behviour: (tktktk)
-
----
-
-# TDD exercise #3 (individual/paired)
-- We need to extend our functionality
-- Expected behaviour: (tktktk)
-
----
-
-# How can I do TDD on my web app
-
-- Possible but more tricky!
-- We'll circle back to this after lunch. 
+- `example-app/src/utils/filterByType.js`
 
 ---
 
@@ -318,7 +256,7 @@ describe('filterOutNullValues()', () => { // top-level describe block
 - Component tests in React are similar to unit tests.
 - Examples:
     - given a set of props, what does a component render?
-    - what happens when we trigger an onChange event? 
+    - does an onChange function passed in to props get called when triggered?
 
 ---
 
@@ -326,15 +264,21 @@ describe('filterOutNullValues()', () => { // top-level describe block
 - Render out a component to see if it matches a snapshot
     - Snapshots are serialized JSON representations of our React components
 
-- Use component instance methods (onChange, onInput) to see if changes are being propagated
+- Interact with the component and see if events fire as expected
 
 ---
 
 # Component testing, exercise #1 (mob)
 
+- Let's render out a snapshot of our PokemonCard component
+- Let's use react-testing-library to test our 
 ---
 
 # Component testing, exercise #2 (paired)
+
+- Render the button component 
+- Check if you can click the button component when it's disabled using react-test-library
+- Check if the button component triggers the onClick function when clicked
 
 ---
 
@@ -356,11 +300,11 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 # Integration tests, cont'd
 
--  Integration testing is _essential_ for any kind of developer testing strategy.
+-  Integration testing is _essential_ for any kind of testing strategy.
 
 - A little trickier to define -- there's multiple differing kinds of strategies.
 
-- A little bit tricker to write, as well unfortunately.
+- A little bit tricker to write as well.
 
 ---
 
@@ -372,36 +316,14 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 ---
 
-# Integration testing libraries
+# Integration testing exercise 1 (mob)
 
-- Enzyme 
-    - Render out react components and dive into the HTML.
-- React Testing Library
-    - Similar to Enzyme.
-- Puppeteer
-    - Headless Chrome instance.
+- Let's write some tests for our SinglePokemonContainer 
 
 ---
 
-# What we'll be learning, and why.
+# Integration testing exercise 2 
 
-- React Testing Library and Puppeteer
+- Try and test the form container! 
 
----
-
-# Puppeteer
-
-- Puppeteer will allow for tests to be written that interact with a _browser instance_ 
-    - advantages: 
-        - closer to a real-world browser, more confidence in your tests
-        - not hooked in to React ecosystem -- if you wanna move to a different framework, tests will still work
-    - disadvantages: 
-        - slower
-        - more complex === more failure points
-
----
-
-# React Testing Library
-
-- The philosophy behind React Testing Library is: 
-    > The more your tests resemble the way your software is used, the more confidence they can give you.
+# Next steps
