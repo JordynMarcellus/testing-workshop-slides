@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     name: `Jordyn Marcellus`,
-    title: `Testing a React web applicaiton with JavaScript`,
+    title: `Testing a React web application with Jest`,
     date: `March 30th, 2019`,
   },
   plugins: [
