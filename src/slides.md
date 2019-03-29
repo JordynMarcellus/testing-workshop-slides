@@ -20,24 +20,34 @@ Jordyn Marcellus (they/them)
 
 ---
 
+# My teaching philosophy
+
+- The best way to learn is by doing
+- Start small, iterate quickly
+- I want you to struggle a **little bit**
+    - [why?](https://twitter.com/jessiewillms/status/1075179385072873472)
+
+---
+
 # What we're learning
 
 - Why we test
-- Test-driven development
-- Unit testing 
+- Unit testing
 - Integration testing
+- Test-driven development (stretch goal)
 
 ---
 
 # Let's get set up!
 
-- We'll need node.js 
-    - ideally latest long-term-support (LTS), currently: 10.15.1
+- We'll need node.js
+    - **ideally** latest long-term-support (LTS), currently: 10.15.1
+    - if you don't, don't worry 😊
 
 - clone repo [here](https://github.com/JordynMarcellus/testing-workshop-slides)
 
 - Raise your hand real high if you need help
-    - Help your fellow workshoppers if you can ☺️
+    - Help your fellow workshoppers if you can! 
 
 ---
 
@@ -57,7 +67,7 @@ Jordyn Marcellus (they/them)
 
 - Are you _confident_ that your code works? (I'm not 🤪)
 
-- Tests give you confidence that your code works as you expect it to.
+- Tests give you confidence your code works as you expect it to.
 
 - Confidence makes you feel better about what you're building, how it's built and how you can ensure you don't break it when trying to make it better.
 
@@ -67,7 +77,7 @@ Jordyn Marcellus (they/them)
 
 - Re-factor with confidence
 
-- Have identifiable cases where we know _how_ our code works. 
+- Have identifiable cases where we know _how_ our code works.
 
 - Instant feedback when things go wrong -- less reliant on manual testing!
 
@@ -75,12 +85,12 @@ Jordyn Marcellus (they/them)
 
 # The benefits of testing, part two
 
-- Essential for continuous integration/deployment 
-    - Don't want to yolo a bad change into prod... 
+- Essential for continuous integration/deployment
+    - Don't want to yolo a bad change into prod...
 
 - Levels up your developer skillzzz
 
-- Makes you a more compelling candiddate in the job market 🤑
+- Makes you a more compelling candidate in the job market 🤑
 
 ---
 
@@ -92,8 +102,8 @@ Jordyn Marcellus (they/them)
 - React test renderer
     - renders react components 
 - React test library
-    - integration testing for react compmonents
-    
+    - integration testing for react components, 
+
 ---
 
 # Test levels
@@ -102,7 +112,7 @@ Jordyn Marcellus (they/them)
     - unit
     - component
     - integration
-    - functional (also called end-to-end or UI testing)
+    - UI testing (also called end-to-end)
 ---
 
 # Unit testing
@@ -120,24 +130,6 @@ component testing: testing a (React) component
 - given a set of props, what does the component render?
 - when a button is clicked, does a function passed in to props get called?
 - difficulty level: easy
----
-
-# Integration testing 
-
-- testing components working together
-    - given some data, what happens with this set of components?
-    - when a button is clicked, does it call an asynchronous data-fetch?
-    - Ensures changes in one part of the codebase don't affect other parts of the codebase.
-- difficulty level: medium
-
-- We will focus on unit, component and integration tests for the purposes of this workshop.
-
----
-
-# A note on functional testing
-
-- Functional testing is hard, messy and out of scope for a six-hour intro workshop.
-- We can get _most_ of the benefits of functional testing with proper integration testing.
 
 ---
 
@@ -146,7 +138,7 @@ component testing: testing a (React) component
 - Tests are usually run as an `npm scripts`
 -- e.g. `npm run test`
 
-- We can write these inside our `package.json` file
+- We write these inside our `package.json` file
 
 ---
 
@@ -157,15 +149,7 @@ component testing: testing a (React) component
 
 - The script we have running will:
     - run our tests in "watch" mode (when we save, it re-runs tests)
-    - collects code coverage from 
-
-# Unit tests
-
-- Unit tests are focused on small, discrete pieces of functionality.
-
-- Examples:
-    - does this filter function work as intended?
-    - what happens when a function receives null as an argument?
+    - collects code coverage (which lets us know what lines of our application have been covered in our tests)
 
 ---
 
@@ -230,51 +214,39 @@ describe('filterOutNullValues()', () => { // top-level describe block
     })
 })
 ```
+---
+
+## Hello, react-testing-library
+
+- The philosophy behind React Testing Library is: 
+    > The more your tests resemble the way your software is used, the more confidence they can give you.
+
+- React Testing Library allows us to use accessibility features to select HTML elements, render out DOM nodes via React and interact with them as a user would. 
+
+---
+
+# Let's get our hands on a keyboard Marcellus >.>
 
 ---
 
 # [Jest cheat sheet](https://devhints.io/jest)
 
----
+# Exercise #1
 
-# Unit testing exercise 1: Unit testing a convenience function (mob)!
-
----
-
-# Unit testing exercise 2: Write some unit tests for convenience functions!
-
-- `example-app/src/utils/filterByType.js`
+- Let's test our Button component!
+-- does the onClick function passed in as props get called when we click it?
+-- does the onClick function NOT get called when we click it? 
+- Render that input into a snapshot when done.
 
 ---
 
-# Component tests
+# Exercise #2
 
-- Component tests in React are similar to unit tests.
-- Examples:
-    - given a set of props, what does a component render?
-    - does an onChange function passed in to props get called when triggered?
-
----
-
-# Styles of component tests
-- Render out a component to see if it matches a snapshot
-    - Snapshots are serialized JSON representations of our React components
-
-- Interact with the component and see if events fire as expected
-
----
-
-# Component testing, exercise #1 (mob)
-
-- Let's render out a snapshot of our PokemonCard component
-- Let's use react-testing-library to test our 
----
-
-# Component testing, exercise #2 (paired)
-
-- Render the button component 
-- Check if you can click the button component when it's disabled using react-test-library
-- Check if the button component triggers the onClick function when clicked
+- Time
+- FYI -- to trigger a change event you'll need to modify the 
+- Expect: the onChange event to be called once.
+- Expect: the onChange function to consume the value from the event target.
+- Render the button component into a snapshot.
 
 ---
 
@@ -286,11 +258,23 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 ---
 
-# Integration tests 
+# Integration testing
+
+- testing components working together
+    - given some data, what happens with this set of components?
+    - when a button is clicked, does it call an asynchronous data-fetch?
+    - Ensures changes in one part of the codebase don't affect other parts of the codebase.
+- difficulty level: medium
+
+- We will focus on unit, component and integration tests for the purposes of this workshop.
+
+---
+
+# Integration tests
 
 - So, we've tested the individual pieces. But how do they play together...?
 
-- [Oh no](https://twitter.com/ThePracticalDev/status/687672086152753152)
+![Oh no](https://cdn-images-1.medium.com/max/720/1*UtZzMT32fRMnSN-HmgiSVQ.gif)
 
 ---
 
@@ -298,7 +282,7 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 -  Integration testing is _essential_ for any kind of testing strategy.
 
-- A little trickier to define -- there's multiple differing kinds of strategies.
+- It's trickier to define, as it's more focused on _integrating_ pieces together.
 
 - A little bit tricker to write as well.
 
@@ -310,25 +294,41 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 - Does a form, containing multiple components, collect and submit data as we expect?
 
+- Does Axios get called when we submit a form? 
+
+---
+
+# Mocking with Jest
+
+- Sometimes, we have external libraries which we need to mock out as they lead to unreliable ("flaky") tests
+    - e.g. making asynchronous calls with axios
+- We use Jest to "mock" those libraries/functions as necessary. 
+- Mocking allows us the 
+
+---
+
+# Mocking with Jest
+
+- Simplest way to mock with Jest (and what we'll be focusing on today): auto-mocking
+
+1. import a module
+2. use `jest.mock()` and pass the _path_ of that module as an argument
+3. You can use `mockReturnValue` or, if a promise `mockResolvedValue` (success condition) or `mockRejectedValue` (error condition!)
+
 ---
 
 # Integration testing exercise 1 (mob)
 
-- Let's write some tests for our SinglePokemonContainer 
+- Let's write some tests for our SinglePokemonContainer! 
 
 ---
 
 # Integration testing exercise 2
 
 - Try and test the form container!
-- Test the app container 😈
+- Challenge mode: let's test the app container.
 
 ---
-
-# Next steps
-
----
-
 
 # Test-driven development
 
@@ -372,35 +372,11 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 - But we know our functionality works, because we have tests!
 
-- So, we made it work... and now we made it work better 😈
+- So, we made it work... and now we make it work better 😈
 
 ---
 
-## Hello, react-testing-library
+# Exercise
 
-- The philosophy behind React Testing Library is: 
-    > The more your tests resemble the way your software is used, the more confidence they can give you.
-
-- React Testing Library allows us to use accessibility features to select HTML elements, render out DOM nodes via React and interact with them as a user would. 
-
----
-
-# Let's get our hands on a keyboard Marcellus >.>
-
----
-
-# TDD, exercise #1 (mob): 
-
-- Let's build an input component! 
-
----
-
-# TDD exercise #2 (individual/paired)
-
-- Build a button 
-
-- Build a form with our input and our button! 
-
----
-
-# Next steps
+- Let's fix a bug...
+- e.g. 
