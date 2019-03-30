@@ -366,7 +366,7 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 # Integration testing exercise 3 
 - Challenge mode: let's test the app container.
-- Expect: 
+- Expect: Enter "pikachu" into the form, hit submit, and render out a pokemon card
 
 ---
 
