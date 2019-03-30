@@ -427,7 +427,7 @@ describe('filterOutNullValues()', () => { // top-level describe block
 - Create a slash for multi-type pokemon
     - e.g. "rock/ground" not "rockground"
 
---- 
+---
 
 # Next steps
 
