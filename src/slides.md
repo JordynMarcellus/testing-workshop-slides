@@ -426,3 +426,15 @@ describe('filterOutNullValues()', () => { // top-level describe block
 - Add an error state for when submitting a pokemon that doesn't exist! 
 - Create a slash for multi-type pokemon
     - e.g. "rock/ground" not "rockground"
+
+--- 
+
+# Next steps
+
+- You've probably got a side-project that could stand to be tested!
+- Make a small app using TDD
+- Explore other kinds of testing! 
+    - Bill Sourour's DevMastery series on TDD with Jest and Puppeteer
+        - [TDD with puppeteer](https://www.youtube.com/watch?v=Hw522TDxMZk)
+        - [TDD re-factoring](https://www.youtube.com/watch?v=IOCcqIKJyFk)
+    - Test [end-to-end with Cypress](https://www.cypress.io/)
