@@ -218,10 +218,12 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 ## Hello, react-testing-library
 
-- The philosophy behind React Testing Library is: 
+- The philosophy behind [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) is: 
     > The more your tests resemble the way your software is used, the more confidence they can give you.
 
 - React Testing Library allows us to use accessibility features to select HTML elements, render out DOM nodes via React and interact with them as a user would. 
+
+- We're also using [jest-dom](https://github.com/gnapse/jest-dom) to add a little special sauce to test our components.
 
 ---
 
@@ -234,19 +236,19 @@ describe('filterOutNullValues()', () => { // top-level describe block
 # Exercise #1
 
 - Let's test our Button component!
--- does the onClick function passed in as props get called when we click it?
--- does the onClick function NOT get called when we click it? 
-- Render that input into a snapshot when done.
+- expect does the onClick function passed in as props get called when we click it?
+-- does the onClick function NOT get called when we click it in a disabled state? 
+- Render that button into a snapshot when complete.
 
 ---
 
 # Exercise #2
 
-- Time
-- FYI -- to trigger a change event you'll need to modify the 
+- Time to test our input component!
+- FYI -- to trigger a change event you'll need to `fireEvent.change(selector, {target: {value: "enter value here"}})
 - Expect: the onChange event to be called once.
 - Expect: the onChange function to consume the value from the event target.
-- Render the button component into a snapshot.
+- Render the input component into a snapshot.
 
 ---
 
@@ -379,4 +381,9 @@ describe('filterOutNullValues()', () => { // top-level describe block
 # Exercise
 
 - Let's fix a bug...
-- e.g. 
+- e.g. when we submit a pokemon, but then delete a few characters.. we get an error
+
+---
+# Exercise 
+
+- Add an error state for when submitting a pokemon that doesn't exist! 
