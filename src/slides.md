@@ -5,8 +5,11 @@ Jordyn Marcellus (they/them)
 ---
 
 # A request before we start learning...
+
 - Be present 
+
 - Play fully
+
 - No bad questions, no bad answers
 
 ---
@@ -16,14 +19,20 @@ Jordyn Marcellus (they/them)
 - Hi, I'm Jordyn. 
     - This is my first time running a workshop, so we're all learning today! 
 
-- Who are you? Why do you want to learn testing? 
+- Who are you? 
+
+- Why do you want to learn testing?
+
+- What do you want to get out of today? 
 
 ---
 
 # My teaching philosophy
 
 - The best way to learn is by doing
+
 - Start small, iterate quickly
+
 - I want you to struggle a **little bit**
     - [why?](https://twitter.com/jessiewillms/status/1075179385072873472)
 
@@ -32,8 +41,11 @@ Jordyn Marcellus (they/them)
 # What we're learning
 
 - Why we test
+
 - Unit testing
+
 - Integration testing
+
 - Test-driven development (stretch goal)
 
 ---
@@ -58,7 +70,9 @@ Jordyn Marcellus (they/them)
 # There is no good code. Only well-tested code.
 
 - Ever looked on previous code and went 😱
+
 - Let's re-factor!
+
 - But... we broke it... 😱
 
 ---
@@ -149,7 +163,6 @@ component testing: testing a (React) component
 
 - The script we have running will:
     - run our tests in "watch" mode (when we save, it re-runs tests)
-
 
 ---
 
