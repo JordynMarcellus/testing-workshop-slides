@@ -44,7 +44,7 @@ Jordyn Marcellus (they/them)
     - **ideally** latest long-term-support (LTS), currently: 10.15.1
     - if you don't, don't worry 😊
 
-- clone repo [here](https://github.com/JordynMarcellus/testing-workshop-slides)
+- clone repo [here](https://github.com/JordynMarcellus/testing-workshop-example-app)
 
 - Raise your hand real high if you need help
     - Help your fellow workshoppers if you can! 
@@ -138,7 +138,7 @@ component testing: testing a (React) component
 - Tests are usually run as an `npm scripts`
 -- e.g. `npm run test`
 
-- We write these inside our `package.json` file
+- We write these npm scripts inside our `package.json` file
 
 ---
 
@@ -149,13 +149,13 @@ component testing: testing a (React) component
 
 - The script we have running will:
     - run our tests in "watch" mode (when we save, it re-runs tests)
-    - collects code coverage (which lets us know what lines of our application have been covered in our tests)
+
 
 ---
 
 # Writing your first test
 
-- In Jest, we set up a test suite and `describe` what we expect to happen. 
+- In Jest, we set up a test suite and `describe` our test suites
 
 ```
 describe('our first test suite', () => {
@@ -172,13 +172,13 @@ describe('our first test suite', () => {
 - an `it()` function block that accepts two parameters
     - a string to describe what's being tested
         - e.g. `it('filters out null values')`
-    - a callback where we write our test code
+    - an anonymous function where we write our test code
 ---
 
 # Anatomy of a Jest test, part two
 
 - Inside of the `it` function block is where we write our test code
-- We write `assertions` -- that is, what we _expect_ to happen when we run our code
+- We write `assertions` -- that is, what we _expect_ to happen when we run our code.
 - Jest has a built-in `expect` function that we can us in conjunction with a `matcher` to determine if our code works as we expect it to. 
 
 ---
@@ -216,14 +216,14 @@ describe('filterOutNullValues()', () => { // top-level describe block
 ```
 ---
 
-## Hello, react-testing-library
+## react-testing-library
 
 - The philosophy behind [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) is: 
     > The more your tests resemble the way your software is used, the more confidence they can give you.
 
 - React Testing Library allows us to use accessibility features to select HTML elements, render out DOM nodes via React and interact with them as a user would. 
 
-- We're also using [jest-dom](https://github.com/gnapse/jest-dom) to add a little special sauce to test our components.
+- We're also using [jest-dom](https://github.com/gnapse/jest-dom) to add extra `matchers` to test our components.
 
 ---
 
@@ -231,21 +231,37 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 ---
 
-# [Jest cheat sheet](https://devhints.io/jest)
+- [Jest cheat sheet](https://devhints.io/jest)
+- React Testing Library:
+    - [API docs](https://testing-library.com/docs/react-testing-library/api) 
+    - [query docs](https://testing-library.com/docs/api-queries)
+    - [events docs](https://testing-library.com/docs/api-events)
+
+- [jest-dom API docs](https://github.com/gnapse/jest-dom)
+
+---
 
 # Exercise #1
 
-- Let's test our Button component!
-- expect does the onClick function passed in as props get called when we click it?
--- does the onClick function NOT get called when we click it in a disabled state? 
-- Render that button into a snapshot when complete.
-
+- Let's test our PokemonCard component! 
+- expect: given a set of props, we see text that gives a pokemon's name and SINGLE type
+- expect: given a set of props, we see the text that gives a pokemon's name and MULTIPLE types
+- render out the component into a snapshot
 ---
 
 # Exercise #2
 
-- Time to test our input component!
-- FYI -- to trigger a change event you'll need to `fireEvent.change(selector, {target: {value: "enter value here"}})
+- Let's test our Button component!
+- expect: does the onClick function NOT get called when we click it when disabled state? 
+- expect: does the onClick function passed in as props get called when we click it?
+- Render that button into a snapshot when complete.
+
+---
+
+# Exercise #3 
+
+- Time to test our Input component!
+- FYI -- to trigger a _change_ event you'll need to use: `fireEvent.change(selector, {target: {value: "enter value here"}})
 - Expect: the onChange event to be called once.
 - Expect: the onChange function to consume the value from the event target.
 - Render the input component into a snapshot.
@@ -267,8 +283,6 @@ describe('filterOutNullValues()', () => { // top-level describe block
     - when a button is clicked, does it call an asynchronous data-fetch?
     - Ensures changes in one part of the codebase don't affect other parts of the codebase.
 - difficulty level: medium
-
-- We will focus on unit, component and integration tests for the purposes of this workshop.
 
 ---
 
@@ -315,20 +329,30 @@ describe('filterOutNullValues()', () => { // top-level describe block
 
 1. import a module
 2. use `jest.mock()` and pass the _path_ of that module as an argument
-3. You can use `mockReturnValue` or, if a promise `mockResolvedValue` (success condition) or `mockRejectedValue` (error condition!)
+3. You can use `mockReturnValue` or, if a promise `mockResolvedValue` (success condition) or `mockRejectedValue` (error condition!) 
 
 ---
 
-# Integration testing exercise 1 (mob)
+# Integration testing exercise 1
 
 - Let's write some tests for our SinglePokemonContainer! 
+- Expect: That if useEffect hasn't returned data, we render the loading state
+- Expect: That if useEffect HAS returned data, we render out a pokemon card
 
 ---
 
 # Integration testing exercise 2
 
 - Try and test the form container!
+- Expect: That we call handleSubmit when there is data and isDiabled=false
+- Expect: That we do NOT call handleSubmit when there is data and isDiabled=true
+- Expect: That when we change the input, the onChange handler is called and matches the data we put into the `fireEvent.change` function.
+
+---
+
+# Integration testing exercise 3 
 - Challenge mode: let's test the app container.
+- Expect: 
 
 ---
 
@@ -381,9 +405,11 @@ describe('filterOutNullValues()', () => { // top-level describe block
 # Exercise
 
 - Let's fix a bug...
-- e.g. when we submit a pokemon, but then delete a few characters.. we get an error
+- e.g. when we submit a pokemon, but then delete a few characters.. our app gets nuked 💣
 
 ---
 # Exercise 
 
 - Add an error state for when submitting a pokemon that doesn't exist! 
+- Create a slash for multi-type pokemon
+    - e.g. "rock/ground" not "rockground"
