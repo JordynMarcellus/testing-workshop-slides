@@ -330,15 +330,16 @@ describe('filterOutNullValues()', () => { // top-level describe block
 # Mocking with Jest
 
 - Sometimes, we have external libraries which we need to mock out as they lead to unreliable ("flaky") tests
-    - e.g. making asynchronous calls with axios
+    - e.g. making asynchronous calls with axios to an authenticated API
 - We use Jest to "mock" those libraries/functions as necessary. 
-- Mocking allows us the 
+- Mocking allows us to reliably and predictably handle external dependencies data in our tests 
+    - but: if the API data or library changes... oops our tests won't be valid anymore.
 
 ---
 
 # Mocking with Jest
 
-- Simplest way to mock with Jest (and what we'll be focusing on today): auto-mocking
+- The simplest way to mock with Jest (and what we'll be focusing on today): auto-mocking
 
 1. import a module
 2. use `jest.mock()` and pass the _path_ of that module as an argument
